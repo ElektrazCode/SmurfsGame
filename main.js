@@ -3,6 +3,7 @@ let smurfsCounter=0;
 
 const smurfs = document.querySelectorAll('.smurf');
 const azraels = document.querySelectorAll('.azrael');
+const found = document.querySelector('.found');
 
 Array.from(smurfs).forEach(element=>element.addEventListener('click',foundSomething));
 Array.from(azraels).forEach(element=>element.addEventListener('click',foundSomething))
@@ -13,6 +14,7 @@ function foundSomething(event){
     if (element.classList.contains('smurf') && (element.style.opacity==='')){
         element.style.opacity='1';
         smurfsCounter++;
+        found.innerText = smurfsCounter;
         if(smurfsCounter===6)
             document.querySelector('h1').textContent='You Won!';  
     }
