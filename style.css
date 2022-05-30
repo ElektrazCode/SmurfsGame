@@ -1,0 +1,152 @@
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face{
+    font-family:"GROBOLD";
+    src: url("GROBOLD.ttf");  
+}
+body{
+    background: linear-gradient(rgb(206,234,255),rgb(136,204,255),rgb(0,0,0));
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+main{
+    width:1000px;
+    height:600px;
+    padding: 1%;
+    background-image: url("images/SmurfsVillage.png");
+    background-repeat: no-repeat;
+    background-size: cover;  
+    color: white;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 20px rgb(0,0,0);
+    font-family:'GROBOLD';
+    position:relative;
+}
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h1, h4, button{
+    background:rgba(136,204,255,0.8);
+    border: 3px solid rgba(255,255,255,0.5);
+    border-radius:15px;
+    color:white;
+    text-align: center;
+}
+button{
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+h1{
+    width: 50%;
+    padding: 2%;
+    font-size: 3em;
+    display:inline-block;
+}
+header > div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+    width: 25%;
+    padding: 0 2%;
+}
+/* h1+div{
+    position:absolute;
+    top:40px;
+    right:20px;
+    width:160px;
+    height:55px;
+} */
+
+h4{
+    display:block;
+    font-weight:lighter;
+    margin:5% auto;
+    padding: 2em;
+    width:35%;
+}
+h4 button{
+    background: white;
+    width: 100px;
+    color: rgb(136,204,255);
+    margin-top: 1em;
+}
+section img{
+    width:5%;
+    position:absolute;
+    opacity:0.5;
+}
+#regSmurf{
+    bottom:30%;
+    left:37%;
+}
+#smurfette{
+    width:7%;
+    top:45%;
+    left:60%;
+}
+#papaSmurf{
+    bottom:17%;
+    left:45%;
+}
+#brainySmurf{
+    right:20%;
+    top:30%;
+}
+#handySmurf{
+    width:7%;
+    bottom:5%;
+    right:5%;
+}
+#vanitySmurf{
+    top:30%;
+    left:22%;
+}
+#azrael1{
+    top:25%;
+    left:50%;
+}
+#azrael2{
+    bottom:20%;
+    right:20%;
+}
+#azrael3{
+    bottom:35%;
+    left:22%;
+}
+#gargamel{
+    width:50%;
+    bottom:-40px;
+    left:30%;
+    opacity:1;
+    display:none;
+}
+.lives{
+    opacity:1;
+    width:50px;
+    /* float:right; */
+}
+/* #heart1{
+    right:0px;
+}
+#heart2{
+    right:50px;
+}
+#heart3{
+    right:100px;
+} */
