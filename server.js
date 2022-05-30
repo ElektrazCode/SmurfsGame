@@ -16,14 +16,18 @@ const server = http.createServer((req, res) => {
     });
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   //Randomizing values and sending them to the client when resetting the game to change the positions of the smurfs.
 =======
 >>>>>>> cd5d9313c556520c32cca83786d20d4c3bfaef31
+=======
+>>>>>>> 6ce752565975dd13800b5590f1cf3fcd1783ff76
   else if (page == '/api') {
     if('action' in params){
       if(params['action']== 'reset'){
         res.writeHead(200, {'Content-Type': 'application/json'});
         console.log('success');
+<<<<<<< HEAD
 <<<<<<< HEAD
         let posX = Math.trunc(Math.random() * 55 + 25);
         let posY = Math.trunc(Math.random() * 70 + 25);
@@ -31,12 +35,17 @@ const server = http.createServer((req, res) => {
         let posX = Math.random() * 55 + 25;
         let posY = Math.random() * 70 + 25;
 >>>>>>> cd5d9313c556520c32cca83786d20d4c3bfaef31
+=======
+        let posX = Math.random() * 55 + 25;
+        let posY = Math.random() * 70 + 25;
+>>>>>>> 6ce752565975dd13800b5590f1cf3fcd1783ff76
 
         const objToJson = {
           width: posX,
           height: posY
         }
         res.end(JSON.stringify(objToJson));
+<<<<<<< HEAD
 <<<<<<< HEAD
       }
     }
@@ -49,6 +58,8 @@ const server = http.createServer((req, res) => {
   }else if (page == '/main.js'){
     fs.readFile('main.js', function(err, data) {
 =======
+=======
+>>>>>>> 6ce752565975dd13800b5590f1cf3fcd1783ff76
       }//student = leon
       else if(params['student'] != 'leon'){
         res.writeHead(200, {'Content-Type': 'application/json'});
@@ -68,7 +79,10 @@ const server = http.createServer((req, res) => {
     });
   }else if (page == '/js/main.js'){
     fs.readFile('js/main.js', function(err, data) {
+<<<<<<< HEAD
 >>>>>>> cd5d9313c556520c32cca83786d20d4c3bfaef31
+=======
+>>>>>>> 6ce752565975dd13800b5590f1cf3fcd1783ff76
       res.writeHead(200, {'Content-Type': 'text/javascript'});
       res.write(data);
       res.end();
@@ -147,7 +161,11 @@ const server = http.createServer((req, res) => {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 server.listen(8000);
 =======
 server.listen(8000);
 >>>>>>> cd5d9313c556520c32cca83786d20d4c3bfaef31
+=======
+server.listen(8000);
+>>>>>>> 6ce752565975dd13800b5590f1cf3fcd1783ff76
