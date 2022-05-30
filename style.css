@@ -1,5 +1,7 @@
 *{
     box-sizing:border-box;
+    margin: 0;
+    padding: 0;
 }
 
 @font-face{
@@ -10,57 +12,84 @@ body{
     background: linear-gradient(rgb(206,234,255),rgb(136,204,255),rgb(0,0,0));
     background-repeat: no-repeat;
     background-size: cover;
-    min-height:100vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 main{
     width:1000px;
     height:600px;
-    margin:auto auto;
+    padding: 1%;
     background-image: url("images/SmurfsVillage.png");
     background-repeat: no-repeat;
-    background-size: cover;
-    background-clip:border-box;
-    text-align: center;
+    background-size: cover;  
     color: white;
     letter-spacing: 0.1em;
     text-shadow: 0 0 20px rgb(0,0,0);
     font-family:'GROBOLD';
     position:relative;
 }
-h1{
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h1, h4, button{
     background:rgba(136,204,255,0.8);
     border: 3px solid rgba(255,255,255,0.5);
     border-radius:15px;
+    color:white;
+    text-align: center;
+}
+button{
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+h1{
     width: 50%;
-    margin:2% auto;
     padding: 2%;
     font-size: 3em;
     display:inline-block;
 }
-h1+div{
+header > div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+    width: 25%;
+    padding: 0 2%;
+}
+/* h1+div{
     position:absolute;
     top:40px;
     right:20px;
     width:160px;
     height:55px;
-}
+} */
 
 h4{
-    background:rgba(136,204,255,0.8);
-    border: 3px solid rgba(255,255,255,0.5);
+    display:block;
     font-weight:lighter;
-    border-radius: 15px;
-    margin:10px;
-    padding: 1%;
-    width:20%;
-    position:absolute;
-    bottom:0;
-    left:0;
+    margin:5% auto;
+    padding: 2em;
+    width:35%;
 }
-img{
+h4 button{
+    background: white;
+    width: 100px;
+    color: rgb(136,204,255);
+    margin-top: 1em;
+}
+section img{
     width:5%;
     position:absolute;
-    opacity:0;
+    opacity:0.5;
 }
 #regSmurf{
     bottom:30%;
@@ -110,9 +139,9 @@ img{
 .lives{
     opacity:1;
     width:50px;
-    float:right;
+    /* float:right; */
 }
-#heart1{
+/* #heart1{
     right:0px;
 }
 #heart2{
@@ -120,4 +149,4 @@ img{
 }
 #heart3{
     right:100px;
-}
+} */

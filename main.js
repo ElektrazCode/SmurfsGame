@@ -35,3 +35,49 @@ function foundSomething(event){
     }
     console.log(`I'm in! Smurfs: ${smurfsCounter} lives: ${livesCounter}`);
 }
+
+document.querySelector('.reset').addEventListener('click', reset);
+document.querySelector('.start').addEventListener('click', start);
+document.querySelector('.help').addEventListener('click', help);
+function start(){
+    document.querySelector('h4').style.display = 'none';
+}
+function help(){
+    document.querySelector('h4').style.display = 'block';
+}
+// async function reset() {
+//     let result = await fetch('/api?action=reset');
+//     let data = await result.json();
+//     console.log(data);
+//     document.querySelector('#brainySmurf').style.left = `${data.width}%`;
+//     document.querySelector('#brainySmurf').style.top = `${data.height}%`;
+// }
+
+const characters = Array.from(document.querySelectorAll('.smurf, .azrael')); 
+
+function isOccupied(posX, posY){
+    for(let i=0; i< characters.length; i++){
+        console.log('checking', characters[i].id, characters[i].width, characters[i].height);
+        if (Math.abs(characters[i].width - posX)<=20 || Math.abs(characters[i].height - posY) <= 20)
+        return true;
+    }
+    return false;
+}
+
+function reset(){
+    let posX=50;
+    let posY=50;
+    console.log(characters);
+    characters.forEach(character => {
+        console.log("Moving: ", character.id);
+        do{
+            posX = Math.trunc(Math.random() * 90 + 2);
+            posY = Math.trunc(Math.random() * 60 + 25);
+            console.log('testing: ', posX, posY);
+        }while(isOccupied(posX, posY));
+
+        character.style.left = `${posX}%`;
+        character.style.top = `${posY}%`;
+        console.log(character.id, "Moved To: ", posX, posY);
+    });
+}
