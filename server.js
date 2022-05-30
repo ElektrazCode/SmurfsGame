@@ -15,38 +15,22 @@ const server = http.createServer((req, res) => {
       res.end();
     });
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
   //Randomizing values and sending them to the client when resetting the game to change the positions of the smurfs.
-=======
->>>>>>> cd5d9313c556520c32cca83786d20d4c3bfaef31
-=======
->>>>>>> 6ce752565975dd13800b5590f1cf3fcd1783ff76
+
   else if (page == '/api') {
     if('action' in params){
       if(params['action']== 'reset'){
         res.writeHead(200, {'Content-Type': 'application/json'});
         console.log('success');
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         let posX = Math.trunc(Math.random() * 55 + 25);
         let posY = Math.trunc(Math.random() * 70 + 25);
-=======
-        let posX = Math.random() * 55 + 25;
-        let posY = Math.random() * 70 + 25;
->>>>>>> cd5d9313c556520c32cca83786d20d4c3bfaef31
-=======
-        let posX = Math.random() * 55 + 25;
-        let posY = Math.random() * 70 + 25;
->>>>>>> 6ce752565975dd13800b5590f1cf3fcd1783ff76
 
         const objToJson = {
           width: posX,
           height: posY
         }
         res.end(JSON.stringify(objToJson));
-<<<<<<< HEAD
-<<<<<<< HEAD
       }
     }
   }
@@ -57,32 +41,17 @@ const server = http.createServer((req, res) => {
     });
   }else if (page == '/main.js'){
     fs.readFile('main.js', function(err, data) {
-=======
-=======
->>>>>>> 6ce752565975dd13800b5590f1cf3fcd1783ff76
-      }//student = leon
-      else if(params['student'] != 'leon'){
-        res.writeHead(200, {'Content-Type': 'application/json'});
-        const objToJson = {
-          name: "unknown",
-          status: "unknown",
-          currentOccupation: "unknown"
-        }
-        res.end(JSON.stringify(objToJson));
-      }//student != leon
-    }//student if
-  }//else if
-  else if (page == '/css/style.css'){
-    fs.readFile('css/style.css', function(err, data) {
       res.write(data);
       res.end();
     });
-  }else if (page == '/js/main.js'){
-    fs.readFile('js/main.js', function(err, data) {
-<<<<<<< HEAD
->>>>>>> cd5d9313c556520c32cca83786d20d4c3bfaef31
-=======
->>>>>>> 6ce752565975dd13800b5590f1cf3fcd1783ff76
+  }
+  else if (page == '/style.css'){
+    fs.readFile('style.css', function(err, data) {
+      res.write(data);
+      res.end();
+    });
+  }else if (page == '/main.js'){
+    fs.readFile('main.js', function(err, data) {
       res.writeHead(200, {'Content-Type': 'text/javascript'});
       res.write(data);
       res.end();
@@ -159,13 +128,5 @@ const server = http.createServer((req, res) => {
     });
   }
 });
+server.listen(8000);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-server.listen(8000);
-=======
-server.listen(8000);
->>>>>>> cd5d9313c556520c32cca83786d20d4c3bfaef31
-=======
-server.listen(8000);
->>>>>>> 6ce752565975dd13800b5590f1cf3fcd1783ff76
