@@ -11,7 +11,7 @@ Array.from(azraels).forEach(element=>element.addEventListener('click',foundSomet
 function foundSomething(event){
     
     let element = event.target;
-    if (element.classList.contains('smurf') && (element.style.opacity==='')){
+    if (element.classList.contains('smurf') && (element.style.opacity!=='1')){
         element.style.opacity='1';
         smurfsCounter++;
         found.innerText = smurfsCounter;
@@ -24,10 +24,11 @@ function foundSomething(event){
             switch(livesCounter){
                 case 2: document.querySelector('#heart1').style.display='none'; break;
                 case 1: document.querySelector('#heart2').style.display='none';
+                break;
             }
             if (livesCounter===0){
                 document.querySelector('#heart3').style.display='none';
-                Array.from(smurfs).forEach(element=>element.style.display='none');
+                Array.from(smurfs).forEach(element=>element.style.opacity = 0);
                 document.querySelector('#gargamel').style.display='block';
                 document.querySelector('h1').textContent='Game Over!';
             }
@@ -56,27 +57,60 @@ function help(){
 // }
 
 const characters = Array.from(document.querySelectorAll('.smurf, .azrael')); 
+const newPositionObject = {};
 
-function isOccupied(posX, posY){
-    for(let i=0; i< characters.length; i++){
-        console.log('checking', characters[i].id, characters[i].width, characters[i].height);
-        if (Math.abs(characters[i].width - posX)<=20 || Math.abs(characters[i].height - posY) <= 20)
-        return true;
+function isOccupied(name, posX, posY){
+    // for(let i=0; i< characters.length; i++){
+    //     console.log('checking', characters[i].id, characters[i].clientLeft, characters[i].clientTop);
+    //     if (name === characters[i].id) {
+    //         continue;
+    //     }
+    //     if (Math.abs(characters[i].clientLeft - posX)<=50 || Math.abs(characters[i].clientTop - posY) <= 50)
+    //     return true;
+    // }
+    console.log(name, posX, posY)
+    for (const obj in newPositionObject) {
+        console.log("distance apart: ", Math.abs(newPositionObject[obj].left - posX), Math.abs(newPositionObject[obj].top - posY))
+        if (Math.abs(newPositionObject[obj].left - posX) <= 2 || Math.abs(newPositionObject[obj].top - posY) <= 2) {
+            return true;
+        }
     }
+    newPositionObject[name] = {
+        left: posX,
+        top: posY
+    }
+    console.log(newPositionObject[0])
     return false;
 }
 
 function reset(){
+    document.querySelector('#gargamel').style.display='none';
+    document.querySelector('h1').textContent='Find The Smurfs';
+    document.querySelector('#heart1').style.display='block';
+    document.querySelector('#heart2').style.display='block';
+    document.querySelector('#heart3').style.display='block';
+    Array.from(document.querySelectorAll('.smurf, .azrael')).forEach(element=>element.style.opacity = .5);
+
+    smurfsCounter = 0;
+    livesCounter = 3;
+
     let posX=50;
     let posY=50;
     console.log(characters);
+
+    characters.forEach(character => {
+        character.style.left = 0;
+        character.style.top = 0;
+    });
+    console.log(characters);
+
     characters.forEach(character => {
         console.log("Moving: ", character.id);
         do{
             posX = Math.trunc(Math.random() * 90 + 2);
             posY = Math.trunc(Math.random() * 60 + 25);
             console.log('testing: ', posX, posY);
-        }while(isOccupied(posX, posY));
+        }while(isOccupied(character.id, posX, posY));
 
         character.style.left = `${posX}%`;
         character.style.top = `${posY}%`;
