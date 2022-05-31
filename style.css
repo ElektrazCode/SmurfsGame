@@ -6,7 +6,7 @@
 
 @font-face{
     font-family:"GROBOLD";
-    src: url("GROBOLD.ttf");  
+    src: url("./GROBOLD.ttf");  
 }
 body{
     background: linear-gradient(rgb(206,234,255),rgb(136,204,255),rgb(0,0,0));

@@ -117,15 +117,15 @@ const server = http.createServer((req, res) => {
       res.end();
     });
   }else{
-    figlet('404!!', function(err, data) {
-      if (err) {
-          console.log('Something went wrong...');
-          console.dir(err);
-          return;
-      }
-      res.write(data);
-      res.end();
-    });
+    // figlet('404!!', function(err, data) {
+    //   if (err) {
+    //       console.log('Something went wrong...');
+    //       console.dir(err);
+    //       return;
+    //   }
+    //   res.write(data);
+    //   res.end();
+    // });
   }
 });
 server.listen(8000);
