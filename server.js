@@ -23,33 +23,33 @@ const server = http.createServer((req, res) => {
         res.writeHead(200, {'Content-Type': 'application/json'});
         console.log('success');
 
-        let posX = Math.trunc(Math.random() * 55 + 25);
-        let posY = Math.trunc(Math.random() * 70 + 25);
-
-        const objToJson = {
-          width: posX,
-          height: posY
+        const newPositionArray = [];
+        for (let i = 0; i < 9; i++) {
+          do{
+            posX = Math.trunc(Math.random() * 90 + 2);
+            posY = Math.trunc(Math.random() * 60 + 25);
+            // console.log('testing: i = ', i, posX, posY);
+          }while(isOccupied(newPositionArray, posX, posY));
+          
         }
-        res.end(JSON.stringify(objToJson));
+      
+        res.end(JSON.stringify(newPositionArray));
       }
     }
   }
   else if (page == '/style.css'){
     fs.readFile('style.css', function(err, data) {
+      res.writeHead(200, {'Content-Type': 'text/css'});
       res.write(data);
       res.end();
     });
-  }else if (page == '/main.js'){
-    fs.readFile('main.js', function(err, data) {
+  }else if (page == '/GROBOLD.tff'){
+    fs.readFile('/GROBOLD.tff', function(err, data) {
+      res.writeHead(200, {'Content-Type': 'application/octet-stream'});
       res.write(data);
       res.end();
     });
-  }
-  else if (page == '/style.css'){
-    fs.readFile('style.css', function(err, data) {
-      res.write(data);
-      res.end();
-    });
+    
   }else if (page == '/main.js'){
     fs.readFile('main.js', function(err, data) {
       res.writeHead(200, {'Content-Type': 'text/javascript'});
@@ -117,16 +117,34 @@ const server = http.createServer((req, res) => {
       res.end();
     });
   }else{
-    // figlet('404!!', function(err, data) {
-    //   if (err) {
-    //       console.log('Something went wrong...');
-    //       console.dir(err);
-    //       return;
-    //   }
-    //   res.write(data);
-    //   res.end();
-    // });
+    figlet('404!!', function(err, data) {
+      if (err) {
+          console.log('Something went wrong...');
+          console.dir(err);
+          return;
+      }
+      res.write(data);
+      res.end();
+    });
   }
 });
 server.listen(8000);
+
+
+function isOccupied(newPositionArray, posX, posY){
+  console.log(newPositionArray, posX, posY)
+  for (let i = 0; i < newPositionArray.length; i++) {
+    // console.log("distance apart: ", Math.abs(newPositionArray[i].left - posX), Math.abs(newPositionArray[i].top - posY))
+    if (Math.abs(newPositionArray[i].left - posX) <= 4 || Math.abs(newPositionArray[i].left.top - posY) <= 4) {
+      return true;
+    } 
+  };
+
+  newPositionArray.push({
+    left: posX,
+    top: posY
+  });
+
+  return false;
+}
 
