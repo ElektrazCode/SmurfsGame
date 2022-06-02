@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs')
 const url = require('url');
 const querystring = require('querystring');
-const figlet = require('figlet')
+// const figlet = require('figlet')
 
 const server = http.createServer((req, res) => {
   const page = url.parse(req.url).pathname;
@@ -44,8 +44,8 @@ const server = http.createServer((req, res) => {
       res.end();
     });
   }else if (page == '/GROBOLD.tff'){
-    fs.readFile('/GROBOLD.tff', function(err, data) {
-      res.writeHead(200, {'Content-Type': 'application/octet-stream'});
+    fs.readFile('GROBOLD.tff', function(err, data) {
+      res.writeHead(200, {'Content-Type': 'font/ttf'});
       res.write(data);
       res.end();
     });
@@ -116,16 +116,16 @@ const server = http.createServer((req, res) => {
       res.write(data);
       res.end();
     });
-  }else{
-    figlet('404!!', function(err, data) {
-      if (err) {
-          console.log('Something went wrong...');
-          console.dir(err);
-          return;
-      }
-      res.write(data);
-      res.end();
-    });
+  // }else{
+  //   figlet('404!!', function(err, data) {
+  //     if (err) {
+  //         console.log('Something went wrong...');
+  //         console.dir(err);
+  //         return;
+  //     }
+  //     res.write(data);
+  //     res.end();
+  //   });
   }
 });
 server.listen(8000);

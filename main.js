@@ -85,6 +85,5 @@ function reset(){
     });
 }
 
-reset()
-
-
+reset();
+}
