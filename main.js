@@ -56,6 +56,9 @@ async function reset() {
     // console.log(data);
     const characters = Array.from(document.querySelectorAll('.smurf, .azrael')); 
 
+
+function reset(){
+    document.querySelector('.found').textContent = 0
     document.querySelector('#gargamel').style.display='none';
     document.querySelector('h1').textContent='Find The Smurfs';
     document.querySelector('#heart1').style.display='block';
@@ -64,7 +67,6 @@ async function reset() {
     Array.from(document.querySelectorAll('.smurf, .azrael')).forEach(element=>element.style.opacity = .1);
 
     smurfsCounter = 0;
-    found.innerText = smurfsCounter;
     livesCounter = 3;
     
     characters.forEach(character => {
