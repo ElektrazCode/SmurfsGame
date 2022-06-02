@@ -84,6 +84,7 @@ function isOccupied(name, posX, posY){
 }
 
 function reset(){
+    document.querySelector('.found').textContent = 0
     document.querySelector('#gargamel').style.display='none';
     document.querySelector('h1').textContent='Find The Smurfs';
     document.querySelector('#heart1').style.display='block';
